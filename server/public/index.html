@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="vendors/jquery-3.2.1.min.js"></script>
+    <script src="scripts/client.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+    <title>Tasks</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div id="tasks">
+            <h2>Honey-Do List</h2>
+            <input type="text" id="taskToAdd" placeholder="Task">
+            <button class="newTask">Add task</button>
+        </div>  
+        <table>
+            <tr>
+                <th>Task Details</th>
+                <th>Task Complete?</th>
+                <th>Complete Task</th>
+                <th>Delete</th>
+            </tr>
+            <tbody id="listOfTasks">
+            </tbody>    
+        </table>    
+        </div>
+    </div> 
+</body>
+</html>
