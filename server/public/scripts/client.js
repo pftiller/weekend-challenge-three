@@ -23,13 +23,9 @@ function grabTask () {
 }
 function printTasks(taskList) {
     for(let i = 0; i < taskList.length; i++) {
-        if(taskList[i].status == '1') {
-            taskList[i].status = 'Y'
-        } else {
-            taskList[i].status = 'N'
-        }
         $('#listOfTasks').append('<tr data-id="' + taskList[i].id + '"><td>' + taskList[i].taskdetails + '</td><td  data-status="' + taskList[i].status + '">' + taskList[i].status + '</td><td><input class="complete" type="checkbox" value=""></td><td><button class="delete">Delete</button></tr>');
         if(taskList[i].status == 'Y'){
+            $('.complete').parent().parent().css("text-decoration", "line-through");
             $('.complete').remove();
           }
           
@@ -46,7 +42,7 @@ class Task {
 
 function newTask() {
         let taskDescription = $('#taskToAdd').val();
-        let taskStatus = "0";
+        let taskStatus = 'N';
         let newTask = new Task (taskDescription, taskStatus);
         $.ajax({
           method: 'POST',
@@ -59,17 +55,16 @@ function newTask() {
     }
     function changeStatus() {
         let id = $(this).parent().parent().data('id');
-        let status = '1';
+        let status = 'Y';
         $(this).parent().text(' ');
-        $(this).parent().parent().css("text-decoration", "line-through");
+        
         $.ajax({
             method: "PUT",
             url: '/mytasklist/' + id,
             data: {status: status},
             success: function (response) {
                 console.log('success: ', response);
-                //$('#listOfTasks').empty();
-               // grabTask();
+               grabTask();
             }   
         });
     }

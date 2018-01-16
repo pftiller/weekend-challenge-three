@@ -3,10 +3,9 @@ CREATE DATABASE mytasklist;
 CREATE TABLE todolist (
 	id SERIAL PRIMARY KEY,
 	taskDetails VARCHAR (250),
-	status VARCHAR(1) DEFAULT '0'
+	status VARCHAR(1) DEFAULT 'N'
 );
 
 INSERT INTO todolist (taskDetails, status)
-VALUES ('do laundry', '0'), ('clean kitchen', '0'), ('call mom', '0'), ('grocery shopping', '0');
+VALUES ('do laundry', 'N'), ('clean kitchen', 'N'), ('call mom', 'N'), ('grocery shopping', 'N');
 
-SELECT * FROM todolist WHERE status='0';

@@ -31,7 +31,7 @@ router.get('/', (req, res) => {
 
 
 router.put('/:id', (req, res) => {
-    const queryText =  `UPDATE todolist SET status = $1 WHERE status = $2;`
+    const queryText =  `UPDATE todolist SET status = $1 WHERE id = $2;`
     pool.query(queryText, [req.body.status, req.params.id])
     .then((result) => {
         console.log('put success: ', result);
