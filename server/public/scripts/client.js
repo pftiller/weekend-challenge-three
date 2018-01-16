@@ -29,6 +29,10 @@ function printTasks(taskList) {
             taskList[i].status = 'N'
         }
         $('#listOfTasks').append('<tr data-id="' + taskList[i].id + '"><td>' + taskList[i].taskdetails + '</td><td  data-status="' + taskList[i].status + '">' + taskList[i].status + '</td><td><input class="complete" type="checkbox" value=""></td><td><button class="delete">Delete</button></tr>');
+        if(taskList[i].status == 'Y'){
+            $('.complete').remove();
+          }
+          
     }
 }
 
@@ -64,8 +68,8 @@ function newTask() {
             data: {status: status},
             success: function (response) {
                 console.log('success: ', response);
-                $('#listOfTasks').empty();
-                grabTask();
+                //$('#listOfTasks').empty();
+               // grabTask();
             }   
         });
     }
