@@ -23,6 +23,11 @@ function grabTask () {
 }
 function printTasks(taskList) {
     for(let i = 0; i < taskList.length; i++) {
+        if(taskList[i].status == '1') {
+            taskList[i].status = 'Y'
+        } else {
+            taskList[i].status = 'N'
+        }
         $('#listOfTasks').append('<tr data-id="' + taskList[i].id + '"><td>' + taskList[i].taskdetails + '</td><td  data-status="' + taskList[i].status + '">' + taskList[i].status + '</td><td><input class="complete" type="checkbox" value=""></td><td><button class="delete">Delete</button></tr>');
     }
 }
