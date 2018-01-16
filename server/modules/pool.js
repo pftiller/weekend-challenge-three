@@ -1,5 +1,5 @@
 const pg = require('pg');
-const Pool = pg.Pool;
+const url = require('url');
 const config = {
     database: process.env.DATABASE_NAME || 'mytasklist',
     host: 'localhost',
@@ -9,4 +9,4 @@ const config = {
 
 const pool = new Pool(config);
 
-module.exports = pool;
+module.exports = new pg.Pool(config);
