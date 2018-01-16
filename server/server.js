@@ -7,8 +7,6 @@ console.log('server is up on: ', port);
 
 });
 
-const path = require( 'path' );
-
 app.use(express.static('server/public'));
 app.use(bodyParser.urlencoded({extended: true}));
 

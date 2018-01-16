@@ -10,25 +10,46 @@ function onReady () {
     $('#listOfTasks').on('change', '.complete', changeStatus);
     $('#listOfTasks').on('click', '.delete', remove);
 }
+function grabTask () {
+    $.ajax({
+        method: "GET",
+        url: '/mytasklist',
+        success: function (response) {
+            console.log('success: ', response);
+            $('#listOfTasks').empty();
+            printTasks(response);
+        }   
+    });
+}
+function printTasks(taskList) {
+    for(let i = 0; i < taskList.length; i++) {
+        $('#listOfTasks').append('<tr data-id="' + taskList[i].id + '"><td>' + taskList[i].taskdetails + '</td><td  data-status="' + taskList[i].status + '">' + taskList[i].status + '</td><td><input class="complete" type="checkbox" value=""></td><td><button class="delete">Delete</button></tr>');
+    }
+}
 
-function newTask () {
+class Task {
+    constructor(taskDetails, status){
+        this.taskDetails = taskDetails;
+        this.status = status;
 
-        const newTask = {
-            taskDetails: $('#taskToAdd').val()
-        }
+    }
+  }
+
+function newTask() {
+        let taskDescription = $('#taskToAdd').val();
+        let taskStatus = "0";
+        let newTask = new Task (taskDescription, taskStatus);
         $.ajax({
-            method: "POST",
-            url:'/mytasklist',
-            data: newTask,
-            success: function (response) {
-                console.log('post success ', response );
-                grabTask();
-            }
+          method: 'POST',
+          url: '/mytasklist',
+          data: newTask,
+          success: function(response){
+            grabTask();
+          }
         });
     }
-
     function changeStatus() {
-        let id = $(this).parent().data('id');
+        let id = $(this).parent().parent().data('id');
         let status = '1';
         $(this).parent().text(' ');
         $(this).parent().parent().css("text-decoration", "line-through");
@@ -45,17 +66,7 @@ function newTask () {
     }
 
 
-function grabTask () {
-    $.ajax({
-        method: "GET",
-        url: '/mytasklist',
-        success: function (response) {
-            console.log('success: ', response);
-            $('#listOfTasks').empty();
-            printTasks(response);
-        }   
-    });
-}
+
 
 function remove() {
     let id = $(this).parent().parent().data('id');
@@ -68,12 +79,4 @@ function remove() {
         }
     });
 }
-
-
-function printTasks(taskList) {
-    for(let i = 0; i < taskList.length; i++) {
-        $('#listOfTasks').append('<tr data-id="' + taskList[i].id + '"><td>' + taskList[i].taskdetails + '</td>' + '<td  data-status="' + taskList[i].status + '">' + taskList[i].status + '<td><input class="complete" type="checkbox" value=""></td><td><button class="delete">Delete</button></tr>');
-    }
-}
-
 

@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool');
 
-router.post('/:id', (req, res) => {
+router.post('/', (req, res) => {
     console.log(req.body, req.res);
-    const queryText = `INSERT INTO todolist (taskDetails) VALUES($1)`
+    const queryText = `INSERT INTO todolist (taskDetails, status) VALUES($1, $2)`
     pool.query(queryText, [req.body.taskDetails])
         .then((result) => {
             console.log('post result: ', result);
