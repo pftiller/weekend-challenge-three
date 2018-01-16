@@ -28,16 +28,18 @@ function newTask () {
     }
 
     function changeStatus() {
-        let status = $(this).parent().prev().data('status');
+        let id = $(this).parent().data('id');
+        let status = '1';
         $(this).parent().text(' ');
         $(this).parent().parent().css("text-decoration", "line-through");
         $.ajax({
-            method: "POST",
-            url: '/mytasklist/' + status,
+            method: "PUT",
+            url: '/mytasklist/' + id,
+            data: {status: status},
             success: function (response) {
                 console.log('success: ', response);
                 $('#listOfTasks').empty();
-                grabTask(response);
+                grabTask();
             }   
         });
     }

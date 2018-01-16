@@ -30,7 +30,7 @@ router.get('/', (req, res) => {
 });
 
 
-router.post('/:status', (req, res) => {
+router.put('/:id', (req, res) => {
     const queryText =  `UPDATE todolist SET status = $1 WHERE status = $2;`
     pool.query(queryText, [req.body.status, req.params.id])
     .then((result) => {
