@@ -1,0 +1,23 @@
+{
+  "name": "weekend-challenge-3",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://github.com/pftiller/weekend-challenge-3#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "jquery": "^3.2.1",
+    "pg": "^7.4.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pftiller/weekend-challenge-3.git"
+  },
+  "description": ""
+}
