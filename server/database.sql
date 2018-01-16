@@ -1,4 +1,4 @@
-CREATE DATABASE myTaskList;
+CREATE DATABASE mytasklist;
 
 CREATE TABLE todolist (
 	id SERIAL PRIMARY KEY,
