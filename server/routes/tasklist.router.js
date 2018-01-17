@@ -4,8 +4,8 @@ const pool = require('../modules/pool');
 
 router.post('/', (req, res) => {
     console.log(req.body, req.res);
-    const queryText = `INSERT INTO todolist (taskDetails, status) VALUES($1, $2)`
-    pool.query(queryText, [req.body.taskDetails, req.body.status])
+    const queryText = `INSERT INTO todolist (taskDetails) VALUES($1)`
+    pool.query(queryText, [req.body.taskDetails])
         .then((result) => {
             console.log('post result: ', result);
             res.send(201);

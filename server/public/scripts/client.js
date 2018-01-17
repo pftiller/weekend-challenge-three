@@ -32,18 +32,8 @@ function printTasks(taskList) {
     }
 }
 
-class Task {
-    constructor(taskDetails, status){
-        this.taskDetails = taskDetails;
-        this.status = status;
-
-    }
-  }
-
 function newTask() {
-        let taskDescription = $('#taskToAdd').val();
-        let taskStatus = 'N';
-        let newTask = new Task (taskDescription, taskStatus);
+        let newTask = { taskDetails: $('#taskToAdd').val() };
         $.ajax({
           method: 'POST',
           url: '/mytasklist',
