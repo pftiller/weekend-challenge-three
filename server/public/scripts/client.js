@@ -24,8 +24,8 @@ function grabTask () {
 function printTasks(taskList) {
     for(let i = 0; i < taskList.length; i++) {
         $('#listOfTasks').append('<tr data-id="' + taskList[i].id + '"><td>' + taskList[i].taskdetails + '</td><td  data-status="' + taskList[i].status + '">' + taskList[i].status + '</td><td><input class="complete" type="checkbox" value=""></td><td><button class="delete">Delete</button></tr>');
-        if(taskList[i].status == 'Y'){
-            $('.complete').parent().parent().css("text-decoration", "line-through");
+        if($('td').data('status') == 'Y'){
+            $('td').parent().css("text-decoration", "line-through");
             $('.complete').remove();
           }
           
